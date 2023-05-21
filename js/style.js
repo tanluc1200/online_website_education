@@ -26,27 +26,33 @@ window.onscroll = () => {
     }
 };
 // Làm nút dark mode
-const toggleBtn = document.querySelector("#toggle-theme");
-let darkMode = localStorage.getItem("dark-mode");
-const enableDarkMode = () => {
-    toggleBtn.classList.replace("fa-sun", "fa-moon");
-    body.classList.add("dark");
-    localStorage.setItem("dark-mode", "enabled");
-};
-const disableDarkMode = () => {
-    toggleBtn.classList.replace("fa-moon", "fa-sun");
-    body.classList.remove("dark");
-    localStorage.setItem("dark-mode", "disabled");
-};
-if (darkMode === "enabled") {
-    enableDarkMode();
+// Lấy trạng thái giao diện từ localStorage, nếu không có thì mặc định là light mode
+let isDarkMode = localStorage.getItem("isDarkMode") === "true" ? true : false;
+
+// Thiết lập trạng thái ban đầu của giao diện
+if (isDarkMode) {
+    document.body.classList.add("dark");
+} else {
+    document.body.classList.remove("dark");
 }
-toggleBtn.onclick = (e) => {
-    console.log("ghg");
-    darkMode = localStorage.getItem("dark-mode");
-    if (darkMode === "disable") {
-        enableDarkMode();
+
+// Hàm xử lý sự kiện khi nhấn nút chuyển đổi giữa light và dark mode
+function toggleMode() {
+    // Thay đổi trạng thái của biến isDarkMode
+    isDarkMode = !isDarkMode;
+
+    // Thêm hoặc xóa class dark-mode vào thẻ body
+    if (isDarkMode) {
+        document.body.classList.add("dark");
     } else {
-        disableDarkMode();
+        document.body.classList.remove("dark");
     }
-};
+
+    // Lưu trạng thái giao diện vào localStorage
+    localStorage.setItem("isDarkMode", isDarkMode);
+}
+
+// Gán hàm xử lý sự kiện cho nút chuyển đổi giữa light và dark mode
+const toggleBtn = document.getElementById("toggleBtn");
+toggleBtn.addEventListener("click", toggleMode);
+

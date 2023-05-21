@@ -24,7 +24,8 @@ body.active {
     padding-left: 0;
 }
 body.dark {
-    --light-color: #aaa;
+    /* --light-color: #aaa; */
+    --light-color: #ddd;
     --light-bg: #333;
     --black: #fff;
     --white: #222;

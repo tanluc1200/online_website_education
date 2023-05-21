@@ -11,7 +11,7 @@ html {
     border: none;
     color: inherit;
     text-transform: capitalize;
-    transition: all 0.2s linear;
+    transition: all 0.2s ease-in-out;
 }
 *,
 *:before,
