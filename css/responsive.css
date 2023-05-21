@@ -1,0 +1,21 @@
+@media (min-width: 1200px) {
+}
+@media (max-width: 1200px) {
+    #sideBar-close-btn {
+        display: block;
+    }
+    body {
+        padding-left: 0;
+    }
+
+    .sideBar {
+        left: -300rem;
+        transition: 0.2s linear;
+    }
+
+    .sideBar.active {
+        left: 0;
+        box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
+        border-right: 0;
+    }
+}
